@@ -438,7 +438,7 @@ function Page() {
       </div>
       {/* 모달 */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div className="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[327px] h-[200px] flex flex-col justify-center items-center">
             <p className="text-lg font-semibold mb-6">
               {editMode ? '수정이 완료되었습니다.' : '등록이 완료되었습니다.'}{' '}
