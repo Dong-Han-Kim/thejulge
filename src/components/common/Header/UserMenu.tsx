@@ -64,9 +64,7 @@ const UserMenu = () => {
         setAlarmList(data);
 
         // 불필요한 api 호출 막기
-        if (!data.hasNext) {
-          clearInterval(alarmInterval);
-        } else {
+        if (data.hasNext) {
           offsetRef.current += 10;
         }
       } catch (error) {
@@ -92,7 +90,7 @@ const UserMenu = () => {
     if (alarmCheckPoint) {
       setNewAlarm(true);
     }
-  }, [alarmList]);
+  }, [alarmList, storageData]);
 
   // 알림창 외부 클릭 시 알림창 닫힘
   const alarmRef = useRef<HTMLDivElement>(null);
