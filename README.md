@@ -1,36 +1,239 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 더줄게 (The Julge) 🧑‍🍳👩‍🍳
 
-## Getting Started
+알바를 구하는 **알바님**과 인재를 찾는 **사장님**을 연결해주는 알바 매칭 플랫폼입니다.
 
-First, run the development server:
+간단한 프로필 등록만으로 서로를 연결하고, 알림 기능을 통해 빠른 매칭이 가능해요!
+
+> Codeit Bootcamp Team Project [팀 일주는 친구들 ]
+> 
+> 
+> 기간: 2025.06.05 ~ 2025.06.22 (약 2주간 진행)
+> 
+
+---
+
+## 📚 목차
+
+1.  배포 링크
+2.  프로젝트 소개
+3.  팀원 및 역할 (R&R)
+4.  개발 기술 및 전략
+5.  컨벤션 요약
+6.  기술 스택과 이유
+7.  실행 방법
+8.  폴더 구조
+9.  주요 기능
+10. 일주는 친구들 소감
+
+
+---
+
+## 🔗 배포 링크 
+
+👉 [thejulge15-8.vercel.app](https://thejulge15-8.vercel.app/)
+
+
+---
+
+## 📌 프로젝트 소개
+
+- 알바님은 공고를 키워드/조건으로 검색하고, 클릭 한 번으로 지원할 수 있습니다.
+- 사장님은 공고를 등록하고, 지원한 알바님을 수락하거나 거절할 수 있습니다.
+- 알림 기능으로 서로의 상태를 빠르게 확인하고 소통할 수 있습니다.
+
+---
+
+## 🧑‍🤝‍🧑 팀원별 역할 R&R
+
+| 이름 | 역할 구분 | 담당 영역 및 R&R |
+| --- | --- | --- |
+| **공통** |  | 프로젝트 초기 세팅 |
+| **유나** | 사장님 페이지 | 사장님 가게 등록 및 수정, 로그인 및 회원가입 기능 구현 |
+| **동환** | 사장님 페이지 | 가게 상세 정보, 공고 등록 및수정, 공고 상세페이지 및 지원자 목록, 발표 |
+| **다인** | 알바님 페이지 | 공고 리스트 렌더링, 정렬 및 상세 필터 기능 구현 |
+| **지선** | 알바님 페이지 | 알바님 프로필 등록 및 수정, 지원한 공고 목록, 검색 결과 페이지 구현 |
+| **동한** | 알바님 페이지 | 공고 상세 렌더링, 알림 기능 구현, 헤더/푸터 공통 UI 개발, 라우트 가드 구현, 유저 상태 관리 구현 |
+
+> 📌 역할은 프로젝트 진행 중 유동적으로 보완되었으며, 전원 공통 컴포넌트와 API 연동 일부를 함께 협력하였습니다.
+> 
+
+---
+
+##  개발 기술 및 전략
+
+###  React 기반 컴포넌트 개발
+
+- 중복 UI 요소를 컴포넌트로 분리하여 재사용성 및 유지보수성 강화
+
+###  코드 스타일 통일
+
+- `ESLint` + `Prettier` 설정을 통해 팀 전체 코드 스타일 통일
+
+###  Git 브랜치 전략
+
+- Git Flow 기반 브랜치 전략 운영
+    
+    
+    | 브랜치 | 역할 |
+    |--------|------|
+    | `main` | 실제 서비스 배포를 위한 브랜치 |
+    | `dev` | 개발 통합 브랜치 |
+    | `feat/*` | 기능 단위 브랜치 (`feat/14-profile-register`) |
+    
+
+> PR 시 GitHub Issues와 연동하여 작업 내역 추적 및 관리 
+모든 기능은 PR을 통해 `dev`에 병합되며, 병합 후 `feat/*` 브랜치는 삭제됩니다.
+> 
+
+- Next.js App Router 구조에 대한 실습과 폴더 구조 이해도 향상
+- 간결한 상태관리 도구인 Zustand로 전역 상태 관리 도입 경험
+- Tailwind CSS로 빠르고 통일된 UI 구현을 경험하며 클래스 설계 역량 향상
+
+---
+
+##  컨벤션 요약
+
+📄 전체 컨벤션 문서는 👉 [GitHub Wiki - 컨벤션 정리](https://github.com/8thejulge/thejulge/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%A0%95%EB%A6%AC) 에서 확인할 수 있습니다.
+
+| 항목 | 규칙 |
+| --- | --- |
+| 파일명 | 컴포넌트: PascalCase / 일반 파일: kebab-case |
+| 컴포넌트 구조 | `components/컴포넌트명/컴포넌트.tsx`  |
+| className | kebab-case |
+| 변수/함수 | camelCase |
+| 함수 작성 방식 | 화살표 함수 사용 |
+| 커밋 메시지 | 타입 명시 (`feat:`, `fix:`, `chore:` 등) |
+| 브랜치명 | 타입/번호-설명 (예: `feat/14-add-login`) |
+
+---
+
+##  기술 스택과 이유
+
+| 항목 | 사용 기술 | 선택한 이유 |
+| --- | --- | --- |
+| **프레임워크** | Next.js (App Router) | 폴더 기반 라우팅 구조가 직관적이고, SSR·CSR·ISR 지원으로 유연한 페이지 렌더링 가능 |
+| **스타일링** | Tailwind CSS | 빠른 스타일링과 유지보수가 쉬움. 클래스 네이밍 고민 없이 개발 속도 향상 |
+| **패키지 매니저** | npm | 가장 보편적이고 안정적인 Node.js 패키지 매니저 |
+| **HTTP 통신** | Axios | Fetch보다 코드 간결성·에러 핸들링 편리함. 인스턴스로 공통 설정 관리 가능 |
+| **언어** | TypeScript | 타입 추론과 오류 방지로 안정적인 협업 가능, 유지보수 용이 |
+| **상태 관리** | Zustand | 설정이 간단하고 가볍고 직관적이라 빠르게 상태 관리 도입 가능 |
+| **포맷터** | Prettier | 팀 내 코드 스타일 통일 및 자동 정리로 생산성 향상 |
+| **린터** | ESLint | 문법 오류 사전 방지 + 코드 일관성 유지 |
+
+---
+
+## 📦 실행 방법
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 폴더 구조
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```jsx
+src/
+├── app/                   # 라우팅 경로 디렉토리
+│   ├── login/
+│   ├── member/
+│   ├── notice/
+│   ├── owner/
+│   ├── result/
+│   ├── sign/
+│   ├── globals.css       # 전역 스타일
+│   ├── layout.tsx        # 최상위 레이아웃 설정
+│   └── page.tsx          # 루트 페이지
+│
+├── components/           # 역할별 UI 컴포넌트
+│   ├── common/
+│   ├── member/
+│   ├── notice/
+│   ├── notice-detail/
+│   ├── owner/
+│   ├── LayoutWrapper.tsx
+│   └── LoginSignAuthFormWrapper.tsx
+│
+├── lib/                  
+│   ├── api/
+│   │   └── axios.ts      # Axios 인스턴스 설정
+│   └── hooks/
+│       ├── notice-detail/
+│       ├── use-auth.tsx
+│       ├── use-token.tsx
+│       └── zustand.ts
+│
+├── types/
+│   └── types.ts          # 전역 타입 정의
 
-## Learn More
+🗂️ 주요 폴더 설명:
+- `app/`: 라우팅 경로 디렉토리
+- `components/`: 역할별 UI 컴포넌트
+- `lib/`: API 및 커스텀 훅 등 비 UI 로직
+- `types/`: 전역 타입 정의
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🧩 주요 기능
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 공통
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 회원가입 / 로그인 (사용자 유형 분기)
+  
+![login-member](https://github.com/user-attachments/assets/d81599dd-41eb-4b5e-8919-f28cdd1501dc)
+![login-owner](https://github.com/user-attachments/assets/3f779ebe-5315-444a-9834-65b10df7f247)
 
-## Deploy on Vercel
+### 알바님
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 공고 검색 (키워드 + 필터링)
+- 프로필 등록 / 수정
+- 신청 내역 확인
+- 알림 시스템 (지원/수락/거절)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![filter](https://github.com/user-attachments/assets/672b1879-dbd5-472b-8aad-3932c8f577aa)
+![searchnull](https://github.com/user-attachments/assets/d619bd1c-852a-4c6d-a4c3-77750792081b)
+![result-search](https://github.com/user-attachments/assets/ac9f81dd-946c-4191-a612-f1c74e118134)
+
+![member:myprofile](https://github.com/user-attachments/assets/c447f420-71db-4b51-8b09-028f5dc193af)
+![moveto_notice](https://github.com/user-attachments/assets/40fb462e-5842-4013-92df-c9bf92eaac43)
+
+
+### 사장님
+
+- 가게 등록 / 수정
+- 공고 등록 및 상세 보기
+- 지원자 관리 (수락/거절)
+
+![owner-register](https://github.com/user-attachments/assets/1d39d355-e1bd-4bad-adee-00acdd004da2)
+![owner-store](https://github.com/user-attachments/assets/95ea9a4f-47f3-4246-b394-6a4e4727ac24)
+
+---
+
+## 🧑‍💻 일주는 친구들 팀원별 소감 
+
+🎤 **유나** 👑
+
+저는 사장 페이지 개발을 담당했습니다. 이 페이지에서는 사장님이 자신의 가게를 직접 등록하고, 이후 편집할 수 있도록 하는 기능을 구현했으며, 로그인과 회원가입 기능도 함께 개발했습니다. 특히 사용자 경험을 고려해 UI를 직관적으로 구성하고, 입력 값 유효성 검사나 예외 처리 등도 신경 써서 구현했습니다.
+이번 프로젝트에서는 제가 팀장을 맡았기 때문에 기획부터 일정 관리, 코드 리뷰, 협업 툴 세팅 등 여러 부분에서 팀을 이끌게 되었습니다 처음에는 부담도 있었지만, 팀원들이 적극적으로 참여해주고 맡은 역할을 잘 수행해준 덕분에 끝까지 무사히 마칠 수 있었습니다. 프로젝트를 진행하면서 팀워크의 중요성을 다시 한 번 느꼈고, 기술적으로도 많이 성장할 수 있었던 값진 경험이었습니다. 끝까지 함께해준 팀원들에게 진심으로 고맙다는 말을 전하고 싶습니다.
+
+🎤 **동환** ✨
+
+이번 프로젝트를 처음 시작할 때 맡은 작업 영역에 대해 처음 구현해 보는 기능과 처음 사용해 보는 라이브러리 등으로 인해 걱정이 앞섰지만 팀원들과의 소통과 멘토님의 피드백으로 걱정과는 다르게 프로젝트를 재미있게 진행할 수 있었고 프로젝트의 구체적인 사용 기술들이 정해진 후에 사전 조사를 통해 습득한 지식이 많은 도움이 되었습니다. 이번 팀 프로젝트를 진행하면서 팀원들과 화기애애하게 미팅을 진행하면서 소통의 중요성을 다시 한번 느꼈고 그로 인해 많은 도움을 받을 수 있었습니다. 좋은 팀원분들과 즐겁게 프로젝트를 할 수 있어서 감사했습니다. 모두 수고 많으셨고 남은 과정도 파이팅입니다~!
+
+🎤 **다인** ✨
+
+이전 프로젝트에서 다뤄보지 않았던 페이지를 맡고 싶어 메인 페이지를 선택했습니다. 덕분에 처음부터 다시 배우는 마음으로 프로젝트를 진행할 수 있었고, 두 가지 필터와 주소 기반 맞춤 공고 추천 기능을 구현하면서 API 요청과 응답 처리에 더욱 익숙해질 수 있었습니다.
+팀원분들께서 항상 "힘들면 말해도 된다", "괜찮다"고 격려해 주셔서 심적으로 든든했고, 덕분에 편안한 마음으로 작업할 수 있었습니다. 모두 소통에 능숙하셔서, 저 역시 소통을 잘한다고 생각했지만 더 많이 배울 수 있었어요.
+이번 팀을 통해 ‘능력만큼이나 소통이 중요하다’는 것을 깊이 느낄 수 있었던, 참 감사한 경험이었습니다.
+
+🎤 **동한** ✨
+
+이번 프로젝트를 처음 시작할 때 맡은 작업 영역에 대해 처음 구현해 보는 기능과 처음 사용해 보는 라이브러리 등으로 인해 걱정이 앞섰지만 팀원들과의 소통과 멘토님의 피드백으로 걱정과는 다르게 프로젝트를 재미있게 진행할 수 있었고 프로젝트의 구체적인 사용 기술들이 정해진 후에 사전 조사를 통해 습득한 지식이 많은 도움이 되었습니다. 이번 팀 프로젝트를 진행하면서 팀원들과 화기애애하게 미팅을 진행하면서 소통의 중요성을 다시 한번 느꼈고 그로 인해 많은 도움을 받을 수 있었습니다. 좋은 팀원분들과 즐겁게 프로젝트를 할 수 있어서 감사했습니다. 모두 수고 많으셨고 남은 과정도 파이팅입니다~!
+
+🎤 **지선** ✨
+
+처음엔 내가 맡은 기능만 잘 해내는 게 목표였는데, 팀원들과 함께 부딪히고 맞춰가다 보니 자연스럽게 서로의 흐름을 이해하고 도와주는 방법을 배우게 되었어요.  처음엔 알바님 프로필 등록 구현하는데 기능이 이렇게 많은 흐름을 타고 있다는 걸 몰랐습니다. 모르는건 팀원들에게 물어보면서 완성했습니다. 누가 먼저랄 것도 없이 부족한 부분은 자발적으로 채워주고 챙겨주는 분위기 덕분에 혼자였다면 하기 힘들 시도들도 용기 내서 해볼 수 있었고, 그 과정에서 많이 성장했습니다. 더줄게 프로젝트는 같이 해서 더 잘 완성된 경험이었어요. 다들 고생하셨습니다!
+
+
+---
