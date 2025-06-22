@@ -43,7 +43,10 @@ const AlarmDropDown = ({ alarm, ref, setNewAlarm, onClick }: AlarmDropDownProps)
             };
             alarmRead();
             setNewAlarm(false);
-            setReadCheck(true);
+            const timeoutId = setTimeout(() => {
+              setReadCheck(true);
+            }, 1500);
+            return () => clearTimeout(timeoutId);
           } catch (error) {
             console.log('읽음 처리 에러:', error);
           }
