@@ -70,7 +70,7 @@ const UserMenu = () => {
         console.error('Alarm Api 호출 에러:', error);
       }
     };
-
+    getAlarmList();
     const alarmInterval = setInterval(() => {
       getAlarmList();
     }, 15000);
